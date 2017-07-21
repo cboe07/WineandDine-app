@@ -166,6 +166,26 @@ router.get('/account', (req,res)=>{
 				console.log(results)
 				var httpDone = 0;
 				var faveArray = [];
+
+				if(results.length == 0){
+					// User has no favorites. Just render page
+					res.render('account', {
+						recipes: faveArray,
+						message: message,
+						firstName: firstName,
+						lastName: lastName,
+						phoneNumber: phoneNumber,
+						email: email,
+						addressLine: addressLine,
+						city: city,
+						state: state,
+						zip: zip,
+						userId: userId,
+						sessionInfo: sessionInfo
+					})
+				}
+
+
 				for(let i = 0; i < results.length; i++){
 					var thisRecipeId = results[i].recipeID;
 					console.log(thisRecipeId)
