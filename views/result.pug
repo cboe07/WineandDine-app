@@ -125,6 +125,7 @@ block content
 						}
 					}
 				}
+
 			
 			
 				function getLocation() {
@@ -134,11 +135,13 @@ block content
 								x.innerHTML = "lat: " + position.coords.latitude + "," + "lng: " + position.coords.longitude;
 								console.log('Done setting the innerHTML')
 								resolve();
+							}, function(error){
+								resolve(error);							
 							})
 						}else {
 							x.innerHTML = "Geolocation is not supported by this browser."
 							console.log("I updated the innerHTML. It is now ",x.innerHTML)
-							resolve();
+							reject();
 						}
 					});
 				}

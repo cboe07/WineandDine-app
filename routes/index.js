@@ -54,7 +54,6 @@ router.post('/loginProcess',(req,res)=>{
 				req.session.name = checkResults[0].firstName;
 				req.session.email = email;
 				req.session.loggedin = true;
-				req.session.userID = checkResults[0].id;
 				res.redirect('/account?msg=loggedin');
 			}else{
 				res.redirect('/login?msg=badLogin');
